@@ -9,9 +9,12 @@ app = FastAPI()
 pipe = LuxuryPipeline()  # reads OPENAI_API_KEY from env
 
 
+from fastapi.middleware.cors import CORSMiddleware
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
+        "https://www.appraiseai.co",
         "https://appraiseai.co",
         "https://ai-appraisal-suite.vercel.app",
         "http://localhost:8080",
@@ -22,7 +25,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 @app.post("/predict")
 async def predict(image: UploadFile = File(...)):
