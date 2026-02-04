@@ -12,16 +12,19 @@ pipe = LuxuryPipeline()  # reads OPENAI_API_KEY from env
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:8080",
-        "https://appraiseai-api.onrender.com/",
-        "http://127.0.0.1:8080",
+        # Local development
         "http://localhost:5173",
         "http://127.0.0.1:5173",
+
+        # Production frontend
+        "https://appraiseai.co",
+        "https://ai-appraisal-suite.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 @app.post("/predict")
 async def predict(image: UploadFile = File(...)):
