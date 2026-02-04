@@ -8,22 +8,16 @@ from api.pipeline import LuxuryPipeline, bytes_to_data_url  # adjust import
 app = FastAPI()
 pipe = LuxuryPipeline()  # reads OPENAI_API_KEY from env
 
-# CORS: allow your dev + prod frontends
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        # Local development
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-
-        # Production frontend
         "https://appraiseai.co",
         "https://ai-appraisal-suite.vercel.app",
-        "ai-appraisal-suite-git-main-dils-6980s-projects.vercel.app",
-        "ai-appraisal-suite-i4mv8bp8f-dils-6980s-projects.vercel.app",
-        "https://ai-appraisal-suite.vercel.app",
-        "ai-appraisal-suite-dils-6980s-projects.vercel.app"
+        "http://localhost:8080",
+        "http://127.0.0.1:8080",
     ],
+    allow_origin_regex=r"^https:\/\/ai-appraisal-suite-.*\.vercel\.app$",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
