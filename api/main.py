@@ -19,6 +19,10 @@ app.add_middleware(
         # Production frontend
         "https://appraiseai.co",
         "https://ai-appraisal-suite.vercel.app",
+        "ai-appraisal-suite-git-main-dils-6980s-projects.vercel.app",
+        "ai-appraisal-suite-i4mv8bp8f-dils-6980s-projects.vercel.app",
+        "https://ai-appraisal-suite.vercel.app",
+        "ai-appraisal-suite-dils-6980s-projects.vercel.app"
     ],
     allow_credentials=True,
     allow_methods=["*"],
